@@ -9,12 +9,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environments';
 
-import { UploadFormComponent } from './components/upload-form/upload-form.component';
-import { UploadListComponent } from './components/upload-list/upload-list.component';
-import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
-
 import { SlidesComponent } from './components/slides/slides.component';
 import { SwiperModule } from 'swiper/angular';
+
+import { DropzoneDirective } from './dropzone.directive';
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 
 
 
@@ -22,9 +22,9 @@ import { SwiperModule } from 'swiper/angular';
   declarations: [
     AppComponent,
     SlidesComponent,
-    UploadFormComponent,
-    UploadListComponent,
-    UploadDetailsComponent
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent
   ],
   imports: [
     BrowserModule,

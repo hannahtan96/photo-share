@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { FileUploadService } from 'src/app/services/file-upload.service';
+import { FileUpload } from 'src/app/models/file-upload.model';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { AngularFireList } from '@angular/fire/compat/database';
 
 
 import SwiperCore, { Keyboard, Pagination, Navigation, Virtual, Autoplay, Lazy } from 'swiper';
@@ -14,14 +17,16 @@ SwiperCore.use([Keyboard, Pagination, Navigation, Virtual, Autoplay, Lazy]);
   encapsulation: ViewEncapsulation.None
 })
 export class SlidesComponent implements OnInit {
+  // slides$ = this.file
   slides$ = new BehaviorSubject<string[]>(['']);
 
-  constructor() {}
+  private basePath = '/uploads';
+
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
-      this.slides$.next(
-        Array.from({ length: 600 }).map((el, index) => `Slide ${index+1}`)
-      );
+    this.slides$.next(
+      Array.from({ length: 600 }).map((el, index) => `Slide ${index+1}`)
+    );
   }
-
 }

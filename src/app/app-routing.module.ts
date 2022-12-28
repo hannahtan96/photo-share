@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SlidesComponent } from './components/slides/slides.component';
-import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import { UploadTaskComponent } from './components/upload-task/upload-task.component';
+import { UploaderComponent } from './components/uploader/uploader.component';
 
 const routes: Routes = [
   {
     path: 'upload',
-    component: UploadFormComponent
+    component: UploaderComponent
   },
   {
     path: '',
