@@ -5,6 +5,8 @@ import { FileUpload } from 'src/app/models/file-upload.model';
 
 import { Observable, Subscription } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators'
+import { TaskEvent } from '@firebase/storage';
+import { UploadTask, UploadTaskSnapshot } from '@angular/fire/compat/storage/interfaces';
 
 @Component({
   selector: 'corp-upload-task',
@@ -17,7 +19,7 @@ export class UploadTaskComponent implements OnInit {
   file!: File;
   task?: AngularFireUploadTask;
   percentage?: Observable<number|undefined>;
-  snapshot?: any;
+  snapshot?: UploadTask;
   downloadURL?: String;
 
 
@@ -34,8 +36,10 @@ export class UploadTaskComponent implements OnInit {
     const fileName = `${Date.now()}_${this.file.name}`;
     const storageRef = this.storage.ref(filePath);
     this.task = this.storage.upload(filePath, file);
+    this.snapshot = this.task.task;
 
-    this.snapshot = this.task.snapshotChanges().pipe(
+    this.task.snapshotChanges().pipe(
+      tap(console.log),
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
           const fileUpload = new FileUpload(fileName, downloadURL, file);
@@ -57,8 +61,8 @@ export class UploadTaskComponent implements OnInit {
       ref.limitToLast(numberItems));
   }
 
-  isActive(snapshot: any ) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
+  isActive(snapshot: UploadTask) {
+    return snapshot.snapshot.state === 'running' && snapshot.snapshot.bytesTransferred < snapshot.snapshot.totalBytes;
   }
 
 }

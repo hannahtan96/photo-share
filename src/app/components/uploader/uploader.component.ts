@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FileUpload } from 'src/app/models/file-upload.model';
 
 @Component({
   selector: 'corp-uploader',
@@ -10,6 +9,7 @@ export class UploaderComponent {
 
   isHovering: boolean=false;
   files: any = [];
+  count: number = 0;
 
   toggleHover(event: boolean) {
     this.isHovering = event;
@@ -18,6 +18,7 @@ export class UploaderComponent {
   onDrop(files: FileList) {
     for (let i=0; i < files.length; i++) {
       this.files.push(files.item(i));
+      this.count ++;
     }
   }
 

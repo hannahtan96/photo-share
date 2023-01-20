@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { FileUpload } from 'src/app/models/file-upload.model';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { AngularFireDatabase, AngularFireList, snapshotChanges } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { AngularFireList } from '@angular/fire/compat/database';
-
+import { FileUpload } from 'src/app/models/file-upload.model';
+import { map } from 'rxjs/operators';
 
 import SwiperCore, { Keyboard, Pagination, Navigation, Virtual, Autoplay, Lazy } from 'swiper';
+
 
 SwiperCore.use([Keyboard, Pagination, Navigation, Virtual, Autoplay, Lazy]);
 
@@ -17,16 +17,37 @@ SwiperCore.use([Keyboard, Pagination, Navigation, Virtual, Autoplay, Lazy]);
   encapsulation: ViewEncapsulation.None
 })
 export class SlidesComponent implements OnInit {
-  // slides$ = this.file
-  slides$ = new BehaviorSubject<string[]>(['']);
 
+  fileUploads: any[] = [];
+  count: number = 1;
   private basePath = '/uploads';
 
-  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
+  constructor(private storage: AngularFireStorage, private db: AngularFireDatabase) {
 
-  ngOnInit(): void {
-    this.slides$.next(
-      Array.from({ length: 600 }).map((el, index) => `Slide ${index+1}`)
-    );
+    this.db.database.ref(this.basePath).on('value', (snap) => {
+      this.count = snap.numChildren();
+    });
   }
+
+  // getCount() {
+  //   this.db.database.ref(this.basePath).on('value', (snap) => {
+  //     this.count = snap.numChildren();
+  //   })
+  // }
+
+  getFiles(numberItems: number) {
+    return this.db.list(this.basePath, ref => ref.limitToLast(numberItems))
+  }
+
+  async ngOnInit() {
+    console.log(this.count)
+    this.getFiles(this.count).snapshotChanges().pipe(
+      map(changes => changes.map(c => (c.payload.val()))
+      )
+    ).subscribe(fileUploads => {
+      this.fileUploads = fileUploads;
+      console.log(this.fileUploads);
+    });
+  };
 }
+

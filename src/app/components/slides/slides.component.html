@@ -9,9 +9,9 @@
   [virtual]="true"
   [autoplay]="{delay:5000}"
   class="my-swiper">
-  <ng-template swiperSlide *ngFor='let slide of slides$ | async; index as i'>
+  <ng-template swiperSlide *ngFor='let file of fileUploads'>
     <div class='swiper-slide-container'>
-      {{ slide }}
+      <img alt='{{ file.name }}' src='{{ file.url }}' >
     </div>
   </ng-template>
 </swiper>
