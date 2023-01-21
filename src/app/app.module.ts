@@ -17,7 +17,6 @@ import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
