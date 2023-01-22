@@ -41,7 +41,6 @@ export class SlidesComponent implements OnInit {
         )
       ).subscribe(fileUploads => {
         this.fileUploads = fileUploads;
-        console.log(this.fileUploads);
     });
   };
 }
