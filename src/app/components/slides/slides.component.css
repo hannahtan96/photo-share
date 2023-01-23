@@ -3,6 +3,11 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/autoplay';
 
+
+:root {
+  --swiper-theme-color: #800080;
+}
+
 .my-swiper {
   height: 90vh;
 }
@@ -22,4 +27,5 @@
 img {
   width: 80%;
   height: auto;
+  box-shadow: 0 -15px 6px -6px darkgray, 0 15px 6px -6px darkgray;
 }

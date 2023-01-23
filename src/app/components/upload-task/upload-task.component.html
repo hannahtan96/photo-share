@@ -7,7 +7,8 @@
 
   <div *ngIf='snap.snapshot.state === "success"'>
     <p>{{ snap.snapshot.metadata.name }}</p>
-    <p>{{ snap.snapshot.bytesTransferred }}. bytes of {{ snap.snapshot.totalBytes }} bytes transferred</p>
+    <p>{{ snap.snapshot.bytesTransferred }} bytes of {{ snap.snapshot.totalBytes }} bytes transferred</p>
+    <p>Your photo has been uploaded!</p>
   </div>
 
   <div *ngIf='downloadURL as url'>

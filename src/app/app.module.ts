@@ -15,6 +15,13 @@ import { SwiperModule } from 'swiper/angular';
 import { DropzoneDirective } from './dropzone.directive';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
+import { LoginComponent } from './login/login.component';
+
+import { TokenInteceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,17 +30,20 @@ import { UploadTaskComponent } from './components/upload-task/upload-task.compon
     SlidesComponent,
     DropzoneDirective,
     UploaderComponent,
-    UploadTaskComponent
+    UploadTaskComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     SwiperModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService, { provide: HTTP_INTERCEPTORS, useClass: TokenInteceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

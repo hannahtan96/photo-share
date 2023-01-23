@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+pre {
+  text-align: left;
+}
+
+* {
+  font-family: monospace;
+}
+
+body {
+  background-color: lavender;
+}
+
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+a {
+  color: black;
+}
+
 .content {
   display: flex;
   padding: 10vh 10vw;
@@ -8,14 +31,6 @@
   justify-content: center;
   text-align: center;
   min-height: 100%;
-}
-
-pre {
-  text-align: left;
-}
-
-html {
-  background: #E8E9EC;
 }
 
 .dropzone {
@@ -40,7 +55,6 @@ html {
 .dropzone.file-label {
   font-size: 1.2em;
 }
-
 
 progress::-webkit-progress-value {
   transition: width 0.1s ease;

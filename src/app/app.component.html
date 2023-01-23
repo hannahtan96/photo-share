@@ -1,1 +1,22 @@
+<div [ngClass]="isUser ? 'display' : 'hide'">
+  <h1>Babe, happy one-year anniversary!</h1>
+
+  <nav>
+    <a class="button"
+      routerLink="upload"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page">
+      Upload
+    </a>
+    <span> | </span>
+    <a class="button"
+      routerLink="/slides"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page">
+      Slides
+    </a>
+  </nav>
+
+</div>
+
 <router-outlet></router-outlet>

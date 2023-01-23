@@ -22,7 +22,6 @@ export class UploadTaskComponent implements OnInit {
   snapshot?: UploadTask;
   downloadURL?: String;
 
-
   private basePath = '/uploads';
 
   constructor(private storage: AngularFireStorage, private db: AngularFireDatabase) { }
