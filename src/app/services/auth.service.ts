@@ -22,3 +22,5 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 }
+
+// https://stackblitz.com/edit/angular-authguard-jwt-duxyen?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Flogin%2Flogin.component.ts

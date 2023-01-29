@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       console.log(this.loginUserData.password)
       localStorage.setItem('token', 'secretToken');
       localStorage.setItem('is_user', 'true')
-      this.router.navigate(['/upload'])
+      this.router.navigate(['/slides'])
     }
   }
 }
