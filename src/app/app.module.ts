@@ -15,7 +15,7 @@ import { SwiperModule } from 'swiper/angular';
 import { DropzoneDirective } from './dropzone.directive';
 import { UploaderComponent } from './components/uploader/uploader.component';
 import { UploadTaskComponent } from './components/upload-task/upload-task.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { TokenInteceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './auth.guard';

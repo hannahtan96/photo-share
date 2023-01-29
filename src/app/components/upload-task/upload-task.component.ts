@@ -24,6 +24,7 @@ export class UploadTaskComponent implements OnInit {
 
   private basePath = '/uploads';
 
+
   constructor(private storage: AngularFireStorage, private db: AngularFireDatabase) { }
 
   ngOnInit() {
@@ -31,17 +32,29 @@ export class UploadTaskComponent implements OnInit {
   }
 
   pushFileToStorage(file: File): Observable<number|undefined> {
-    const filePath = `${this.basePath}/${file.name}`;
-    const fileName = `${Date.now()}_${this.file.name}`;
+
+    let newFile = file
+
+    // if (file.name.endsWith('heic')) {
+    //   let blob = file.slice(0, file.size, 'image/jpeg');
+    //   newFile = new File([blob], `${file.name.slice(0,file.name.length-5)}.jpeg`, {type: 'image/jpeg'});
+    // } else {
+    //   newFile = file
+    // };
+
+    const filePath = `${this.basePath}/${newFile.name}`;
+    console.log(filePath)
+    const fileName = `${Date.now()}_${newFile.name}`;
     const storageRef = this.storage.ref(filePath);
-    this.task = this.storage.upload(filePath, file);
+    this.task = this.storage.upload(filePath, newFile);
     this.snapshot = this.task.task;
 
     this.task.snapshotChanges().pipe(
       tap(console.log),
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
-          const fileUpload = new FileUpload(fileName, downloadURL, file);
+
+          const fileUpload = new FileUpload(fileName, downloadURL, newFile);
           this.saveFileData(fileUpload);
         });
       })

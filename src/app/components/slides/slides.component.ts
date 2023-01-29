@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, snapshotChanges } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { map } from 'rxjs/operators';
-import { UploaderComponent } from '../uploader/uploader.component';
 
 import SwiperCore, { Keyboard, Pagination, Navigation, Virtual, Autoplay, Lazy } from 'swiper';
 import { UploadTaskComponent } from '../upload-task/upload-task.component';

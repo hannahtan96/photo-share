@@ -8,11 +8,6 @@
         <form class="form" #f="ngForm">
 
           <div class="form-group">
-            <label for="username">Username</label>
-            <input [(ngModel)]="loginUserData.username" #username="ngModel" name="username" type="text" class="form-control rounded-0" [ngClass]="{ 'is-invalid':  username.invalid && username.touched }" required  >
-          </div>
-
-          <div class="form-group">
             <label for="password">Password</label>
             <input type="password" [(ngModel)]="loginUserData.password" #password="ngModel" name="password"  class="form-control rounded-0"  [ngClass]="{ 'is-invalid':  password.invalid && password.touched }"  required >
               <div *ngIf="password.invalid" class="invalid-feedback">

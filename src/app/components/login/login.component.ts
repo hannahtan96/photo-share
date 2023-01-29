@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginUserData: User = { username: '', password: ''};
+  loginUserData: User = { password: ''};
   allowedPassword = 'bub';
 
   constructor(private _auth: AuthService, private router: Router) {}
@@ -32,6 +32,5 @@ export class LoginComponent implements OnInit {
 }
 
 export interface User {
-  username: string;
   password: string;
 }
