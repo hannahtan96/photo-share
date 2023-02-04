@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "photo-share-app": {
+    "photo-share": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/photo-share-app",
+            "outputPath": "dist/photo-share",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -89,10 +89,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "photo-share-app:build:production"
+              "browserTarget": "photo-share:build:production"
             },
             "development": {
-              "browserTarget": "photo-share-app:build:development"
+              "browserTarget": "photo-share:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "photo-share-app:build"
+            "browserTarget": "photo-share:build"
           }
         },
         "test": {

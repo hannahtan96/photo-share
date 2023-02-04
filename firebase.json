@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/photo-share-app",
+    "public": "y",
     "ignore": [
       "firebase.json",
       "**/.*",
