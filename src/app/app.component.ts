@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'photo-share-app';
+  title = 'photo-share';
 
   constructor(private _authService: AuthService, private router: Router) {}
 
